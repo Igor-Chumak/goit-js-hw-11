@@ -1,12 +1,14 @@
 :root {
   --flex-gap: 20px;
-  --bg-color-card: rgba(232, 7, 90, 0.471);
+  --bg-color-card: white;
+  --border-color-card: rgb(81, 4, 46);
 }
 
 body {
   padding: 0px;
   margin: 0px;
   overflow-x: hidden;
+  background-color: darkgrey;
 }
 
 .photo-card img {
@@ -73,6 +75,7 @@ body {
   color: black;
   font-style: italic;
   border-radius: 15px;
+  border: 2px var(--border-color-card);
   overflow: hidden;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 2px 4px rgba(46, 47, 66, 0.16), 0px 3px 6px rgba(46, 47, 66, 0.08);

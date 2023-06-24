@@ -1,18 +1,18 @@
-import { fetchUrl, renderMarkup, clearMarkup } from './main_code.js';
+import { fetchUrl, renderMarkup, clearMarkup } from './main.js';
 
 // npm i notiflix
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-const notifyWarning = {
-  width: '500px',
-  fontSize: '25px',
-  position: 'center-top',
-  opacity: 0.7,
-  timeout: 1500,
-};
+// const notifyWarning = {
+//   width: '500px',
+//   fontSize: '25px',
+//   position: 'center-top',
+//   opacity: 0.7,
+//   timeout: 1500,
+// };
 
 Notify.init({
-  width: '500px',
-  fontSize: '25px',
+  width: '400px',
+  fontSize: '20px',
   position: 'right-top',
   timeout: '1500',
   messageMaxLength: 150,
@@ -51,13 +51,13 @@ const refs = {
   form: document.querySelector('.search-form'),
   gallery: document.querySelector('.gallery'),
   loadBtn: document.querySelector('.load-more'),
-  alertLoader: document.querySelector('.loader'),
+  loaderWait: document.querySelector('.loader'),
 };
 
 refs.form.addEventListener('submit', fetchData);
 refs.loadBtn.addEventListener('click', onLoadMore);
 refs.loadBtn.classList.toggle('is-hidden');
-refs.alertLoader.classList.add('is-hidden');
+refs.loaderWait.classList.add('is-hidden');
 
 const options = new URLSearchParams({
   key: API_KEY,
@@ -67,24 +67,24 @@ const options = new URLSearchParams({
   image_type: 'photo',
   orientation: 'horizontal',
   safesearch: true,
-  page: 1,
 });
 let page = Number(options.get('page'));
 let perPage = Number(options.get('per_page'));
 let totalHits = 0;
 let maxPage = 10;
 
-async function fetchData(event) {
+async function fetchData(e) {
   try {
-    event.preventDefault();
+    e.preventDefault();
     page = Number(options.get('page'));
-    let inputValue = event.currentTarget.elements.searchQuery.value.trim();
+    let inputValue = e.currentTarget.elements.searchQuery.value.trim();
+
     if (inputValue === '') {
       options.set('page', `1`);
       Notify.failure('Invalid value. Input text, please.');
-
       return;
     }
+
     if (options.get('q') !== inputValue) {
       options.set('page', `1`);
       options.set('q', `${inputValue}`);
@@ -96,9 +96,10 @@ async function fetchData(event) {
       refs.loadBtn.classList.add('is-hidden');
       throw new Error(error);
     }
-    refs.alertLoader.classList.toggle('is-hidden');
 
-    const result = await fetchUrl(`${BASE_URL}?${options}`);
+    refs.loaderWait.classList.toggle('is-hidden');
+
+    const result = await fetchUrl(`${API_URL}?${options}`);
     refs.loadBtn.classList.remove('is-hidden');
     totalHits = result.data.totalHits;
 
@@ -117,7 +118,7 @@ async function fetchData(event) {
     clearMarkup();
     renderMarkup(result.data.hits);
 
-    refs.alertLoader.classList.toggle('is-hidden');
+    refs.loaderWait.classList.toggle('is-hidden');
     page += 1;
     options.set('page', `${page}`);
 
@@ -165,14 +166,14 @@ async function onLoadMore() {
     }
 
     refs.loadBtn.classList.add('is-hidden');
-    refs.alertLoader.classList.toggle('is-hidden');
+    refs.loaderWait.classList.toggle('is-hidden');
 
     const result = await fetchUrl(`${BASE_URL}?${options}`);
 
     renderMarkup(result.data.hits);
 
     refs.loadBtn.classList.remove('is-hidden');
-    refs.alertLoader.classList.toggle('is-hidden');
+    refs.loaderWait.classList.toggle('is-hidden');
     page += 1;
     options.set('page', `${page}`);
     return result;
