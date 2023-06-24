@@ -57,7 +57,7 @@ const refs = {
 refs.form.addEventListener('submit', fetchData);
 refs.loadBtn.addEventListener('click', onLoadMore);
 refs.loadBtn.classList.toggle('is-hidden');
-refs.loaderWait.classList.add('is-hidden');
+// refs.loaderWait.classList.add('is-hidden');
 
 const options = new URLSearchParams({
   key: API_KEY,

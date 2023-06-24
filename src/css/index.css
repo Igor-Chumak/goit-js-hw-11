@@ -112,13 +112,13 @@ body {
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-  background-color: bisque;
-  color: rgb(4, 0, 223);
-  padding: 15px 30px;
+  background-color: black color: rgb(220, 255, 196);
+  padding: 10px 30px;
 
-  font-size: 30px;
-  font-weight: 700;
-  border: 3px solid rgb(4, 0, 223);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  border: 3px solid rgb(51, 255, 0);
   border-radius: 20px;
 }
 
