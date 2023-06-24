@@ -30,7 +30,7 @@ Notify.init({
 });
 
 // https://cssloaders.github.io/
-import './css/loader.css';
+import '../css/loader.css';
 
 // npm install simplelightbox
 import SimpleLightbox from 'simplelightbox';
@@ -41,7 +41,8 @@ import axios from 'axios';
 // const axios = require('axios/dist/node/axios.cjs');
 
 // npm i lodash.throttle
-let throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
+// let throttle = require('lodash.throttle');
 
 const API_KEY = '37780751-c0706f5026557b01bc2eaa9ec';
 const API_URL = 'https://pixabay.com/api/';

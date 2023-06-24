@@ -1,6 +1,6 @@
 :root {
   --flex-gap: 20px;
-  --background-color-card: rgba(139, 230, 227, 0.619);
+  --bg-color-card: rgba(232, 7, 90, 0.471);
 }
 
 body {
@@ -8,6 +8,7 @@ body {
   margin: 0px;
   overflow-x: hidden;
 }
+
 .photo-card img {
   display: inline-block;
   width: 100%;
@@ -24,14 +25,17 @@ body {
   padding: 30px 0;
   background-color: rgb(196, 234, 255);
 }
+
 .search-form input {
   font-size: 30px;
   margin: 0 auto;
-  max-width: 200px;
+  max-width: 300px;
+  text-align: center;
   margin-bottom: 30px;
   border: 2px solid red;
   border-radius: 10px;
 }
+
 .search-form button {
   margin: 0 auto;
   max-width: 200px;
@@ -39,14 +43,17 @@ body {
   padding: 10px 30px;
   border: 3px solid red;
   border-radius: 20px;
-  background-color: bisque;
+  background-color: rgb(220, 255, 196);
 }
+
 .search-form button:hover {
-  background-color: aqua;
+  background-color: rgb(0, 255, 119);
 }
+
 .search-form button:active {
   background-color: yellow;
 }
+
 .gallery {
   max-width: 1400px;
   margin: 30px auto;
@@ -57,9 +64,10 @@ body {
   gap: var(--flex-gap);
   padding: 20px var(--flex-gap);
 }
+
 .photo-card {
   width: calc((1440px - 5 * var(--flex-gap)) / 4);
-  background-color: var(--background-color-card);
+  background-color: var(--bg-color-card);
   text-decoration: none;
   font-size: 20px;
   color: black;
@@ -85,13 +93,16 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .info-item b {
   display: inline-block;
   margin-bottom: 20px;
 }
+
 .is-hidden {
   visibility: hidden;
 }
+
 .load-more {
   display: block;
   margin-top: 30px;
@@ -106,9 +117,11 @@ body {
   border: 3px solid rgb(4, 0, 223);
   border-radius: 20px;
 }
+
 .load-more:hover {
   background-color: aqua;
 }
+
 .load-more:active {
   background-color: yellow;
 }
