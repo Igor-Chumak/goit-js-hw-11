@@ -43,8 +43,8 @@ import axios from 'axios';
 // npm i lodash.throttle
 let throttle = require('lodash.throttle');
 
-const API_KEY = '37137188-6bb810a50b61d3532d7744a01';
-const BASE_URL = 'https://pixabay.com/api/';
+const API_KEY = '37780751-c0706f5026557b01bc2eaa9ec';
+const API_URL = 'https://pixabay.com/api/';
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -57,8 +57,6 @@ refs.form.addEventListener('submit', fetchData);
 refs.loadBtn.addEventListener('click', onLoadMore);
 refs.loadBtn.classList.toggle('is-hidden');
 refs.alertLoader.classList.add('is-hidden');
-
-
 
 const options = new URLSearchParams({
   key: API_KEY,
