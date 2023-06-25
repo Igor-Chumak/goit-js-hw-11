@@ -57,12 +57,13 @@ const refs = {
 refs.form.addEventListener('submit', fetchData);
 refs.loadBtn.addEventListener('click', onLoadMore);
 refs.loadBtn.classList.toggle('is-hidden');
-// refs.loaderWait.classList.add('is-hidden');
+refs.loaderWait.classList.add('is-hidden');
 
 const options = new URLSearchParams({
   key: API_KEY,
   page: 1,
-  per_page: 40,
+  per_page: 12,
+  // per_page: 40,
   q: null,
   image_type: 'photo',
   orientation: 'horizontal',
@@ -168,7 +169,7 @@ async function onLoadMore() {
     refs.loadBtn.classList.add('is-hidden');
     refs.loaderWait.classList.toggle('is-hidden');
 
-    const result = await fetchUrl(`${BASE_URL}?${options}`);
+    const result = await fetchUrl(`${API_URL}?${options}`);
 
     renderMarkup(result.data.hits);
 
